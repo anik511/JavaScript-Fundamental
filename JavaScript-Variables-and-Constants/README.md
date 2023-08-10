@@ -1,6 +1,6 @@
 ### JavaScript Variables and Constants
 
-**Variables :** 
+## Variables 
 
 >A variable serves as a storage container for holding data. For instance,
 ```js
@@ -14,3 +14,11 @@ let a;
 var b;
 ```
 Here, a and b are variables.
+
+## Var
+
+- var variables are function scoped.
+
+**What does this mean?**
+
+>It means they are only available inside the function they're created in, or if not created inside a function, they are globally scoped.
