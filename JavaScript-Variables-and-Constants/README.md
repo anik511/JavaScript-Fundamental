@@ -22,3 +22,9 @@ Here, a and b are variables.
 **What does this mean?**
 
 >It means they are only available inside the function they're created in, or if not created inside a function, they are globally scoped.
+
+## let
+
+- let variables are block scoped.
+
+>in JavaScript, the let keyword introduces block-scoped variables. This means that a variable declared using let is only accessible within the block of code (enclosed by curly braces **{ }**) in which it is defined.
