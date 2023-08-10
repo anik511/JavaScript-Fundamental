@@ -19,4 +19,5 @@ JavaScript is a ***synchronous single-threaded*** programming language.
 - জাভাস্ক্রিপ্টের একটি মৌলিক বৈশিষ্ট্যই হল এর  সিঙ্গেল থ্রেডেড আচরণ করা। এর মানে হল যে, ডিফল্ট ভাবে, জাভাস্ক্রিপ্ট একবারে শুধুমাত্র একটি অপারেশন করতে পারে। যখন একটি জাভাস্ক্রিপ্ট প্রোগ্রাম চলে, তখন জাভাস্ক্রিপ্ট একটি ক্রমানুসারে কাজগুলিকে করে এবং নতুন কাজ শুরু করার আগে পূর্বের কাজটি শেষ করে। 
 
 **Topics**
+
 -[JavaScript Variables and Constants](JavaScript-Variables-and-Constants)
