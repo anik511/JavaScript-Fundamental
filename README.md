@@ -21,3 +21,4 @@ JavaScript is a ***synchronous single-threaded*** programming language.
 **Topics**
 
 - [JavaScript Variables and Constants](JavaScript-Variables-and-Constants)
+- [Execution Context](Execution-Context)
