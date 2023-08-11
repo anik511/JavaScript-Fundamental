@@ -1,4 +1,4 @@
-# JavaScript Variables and Constants
+# Execution Context
 
 ### Variables 
 
@@ -94,4 +94,4 @@ console.log(x); // Error: x is not defined
   - ### What is Global scope?
   - ### What is Block scope?
 
-  > ***Note: Scope will be explained in scope section. Before learning scope we need to know about "[Execution Context](Execution-Context)".***
+  > ***Note: Scope will be explained in scope section. Before learning scope we need to know about "execution context".***
