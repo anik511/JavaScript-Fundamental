@@ -24,6 +24,7 @@ Here, a, b and c are variables.
 **What does this mean?**
 
 >It means they are only available inside the function they're created in, or if not created inside a function, they are ***globally scoped***.
+var can be re-declared any where in the code.
 ```js
 var z = 9;
 console.log(z); // Expected output: 9
