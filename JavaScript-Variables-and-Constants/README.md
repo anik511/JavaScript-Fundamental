@@ -23,12 +23,13 @@ Here, a, b and c are variables.
 
 **What does this mean?**
 
-> - It means they are only available inside the function they're created in, or if not created inside a function, they are ***globally scoped***.
+> - It means they are only available inside the function they're created in, or if not created inside a function, they are ***globally scoped*** and also part of ***Global Object***.
 > - var can be re-declared any where in the code.
 
 ```js
 var z = 9;
 console.log(z); // Expected output: 9
+console.log(this.z); // Expected output: 9, this.z works because by declaring a variable with var it became a property of global object.
 var z = 5;
 function aboutVar(){
   var x = 42;
