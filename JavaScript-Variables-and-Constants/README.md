@@ -102,26 +102,26 @@ console.log(x); // Error: x is not defined
     > Variables declared with let and const are block-scoped, meaning they are confined to the block ({}) in which they are defined.
     
     > The global object is a single, shared namespace. If let and const were added to it, they would violate their block-scoping nature.
-    ```js
+```js
     let a = 10;
     console.log(window.a); // undefined (not part of the global object)
     
     var b = 20;
     console.log(window.b); // 20 (added to the global object)
-    ```
+```
    - Temporal Dead Zone (TDZ)
      >let and const have a feature called the ***Temporal Dead Zone (TDZ)***. They are not accessible before their declaration, even if they are part of the same scope.
      
      >If let and const were added to the global object, it would conflict with the TDZ concept, as global variables in the global object are accessible immediately.
 
-    ```js
+```js
     console.log(x); // ReferenceError: Cannot access 'x' before initialization
     let x = 5;
     
     // If `let x` were part of the global object, you'd expect `window.x` to exist.
     console.log(window.x); // undefined
 
-    ```
+```
    - Avoiding Global Pollution:
      
      - One of the key motivations behind let and const was to reduce global namespace pollution.
