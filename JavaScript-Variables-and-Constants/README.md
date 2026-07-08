@@ -13,9 +13,14 @@ In JavaScript, we use keyword ***var***, ***let*** or ***const*** for declaring 
 ```js
 let a;
 var b;
-const c;
+const c; // ❌ SyntaxError: Missing initializer in const declaration
 ```
 Here, a, b and c are variables.
+
+> ***Note: `const c;` is actually invalid.*** Unlike `var` and `let`, a `const` declaration **must** be initialized with a value at the moment it is declared. Because a `const` can never be reassigned later, declaring one without a value would leave you with a variable that is permanently `undefined` and can never be given a value — so JavaScript forbids it. A valid `const` looks like this:
+```js
+const c = 10; // ✅ initialized at declaration
+```
 
 ## Var (Before ES6 (ES2015))
 
@@ -29,7 +34,11 @@ Here, a, b and c are variables.
 ```js
 var z = 9;
 console.log(z); // Expected output: 9
-console.log(this.z); // Expected output: 9, this.z works because by declaring a variable with var it became a property of global object.
+
+// this.z works in a browser's non-module script, because a var declared
+// in the global scope becomes a property of the global object (window).
+console.log(this.z); // Browser (non-module): 9  |  Node.js / ES module: undefined
+
 var z = 5;
 function aboutVar(){
   var x = 42;
@@ -40,6 +49,18 @@ function aboutVar(){
 aboutVar();
 console.log(z); // Expected output: 5
 console.log(x); // Error: x is not defined
+```
+
+> ***Note on `this.z`:*** This only prints `9` in a **browser non-module `<script>`**, where `this` at the top level refers to the global object (`window`). In **Node.js** or inside an **ES module (`type="module"`)**, `this` at the top level is *not* the global object, so `this.z` would be `undefined`.
+
+### Hoisting with var
+
+> `var` declarations are *hoisted* — the declaration is moved to the top of its scope, but **only the declaration, not the assignment**. This is why a `var` can be used before the line it's written on, and simply reads as `undefined` until the assignment runs:
+
+```js
+console.log(a); // undefined (declaration hoisted, assignment not yet run)
+var a = 5;
+console.log(a); // 5
 ```
 
 ## let (ES6 (ES2015))
@@ -88,6 +109,25 @@ if(true){
 console.log(z); // Expected output: 9
 console.log(x); // Error: x is not defined
 ```
+
+### Important: const prevents *reassignment*, not *mutation*
+
+> A very common beginner gotcha: `const` stops you from **reassigning** the variable to a new value, but it does **not** make the value itself immutable. If the value is an object or array, you can still change its *contents*:
+
+```js
+const arr = [1, 2];
+arr.push(3);  // ✅ works fine — arr is now [1, 2, 3]
+arr[0] = 99;  // ✅ works fine — arr is now [99, 2, 3]
+
+arr = [4, 5]; // ❌ error: Assignment to constant variable.
+```
+```js
+const user = { name: "Sam" };
+user.name = "Alex"; // ✅ works fine — mutating a property
+user = {};          // ❌ error: Assignment to constant variable.
+```
+
+> So `const` guarantees the *binding* (which value the variable points to) never changes — not that the value can never be modified.
 
 > ***Note: let and const are not part of global object.***
 
@@ -142,7 +182,7 @@ console.log(x); // Error: x is not defined
   ### 2. What is ES6 (ES2015)?
    > ES6, also known as ECMAScript 2015 or ES2015, is a major update to the JavaScript language specification. It introduced a wide range of new features, syntax improvements, and APIs that significantly enhanced the 
      capabilities of JavaScript for both browser and server-side development. ES6 was a significant milestone in the evolution of JavaScript, and many of its features have become fundamental to modern JavaScript 
-     programming. [Batter explanation is here](https://codeburst.io/javascript-wtf-is-es6-es8-es-2017-ecmascript-dca859e4821c)
+     programming. [Better explanation is here](https://codeburst.io/javascript-wtf-is-es6-es8-es-2017-ecmascript-dca859e4821c)
   ### 3. What is function scope?
   ### 4. What is Global scope?
   ### 5. What is Block scope?
